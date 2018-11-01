@@ -1,11 +1,21 @@
 'use strict';
 
-const authCtrl = require('../controllers/AuthCtrl');
-const userCtrl = require('../controllers/UserCtrl');
-const doboSTLCtrl = require('../controllers/DoboSLTCtrl');
-const doboCtrl = require('../controllers/DoboCtrl');
+const chatCtrl = require('../controllers/ChatCtrl');
 
 module.exports = (router) => {
+
+
+  router.route('/chat')
+    .get(chatCtrl.category);
+  
+  router.route('/chat/division/:category')
+    .get(chatCtrl.division);
+  
+  router.route('/chat/section/:id')
+    .get(chatCtrl.section);
+
+
+  /*
 
   // USER
   router.route('/users/signin')
@@ -53,5 +63,8 @@ module.exports = (router) => {
     .post(authCtrl.auth, doboCtrl.addReview)
     .delete(authCtrl.auth, doboCtrl.deleteReview);
 
+*/
   return router;
 };
+
+

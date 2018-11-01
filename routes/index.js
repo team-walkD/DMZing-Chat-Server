@@ -10,6 +10,6 @@ if (process.env.NODE_ENV === 'development') {
 
 module.exports = (app) => {
     for (let ctrl of list) {
-        app.use('/api', require(`./${ctrl}`)(router));
+        app.use('/', require(`./${ctrl}`)(router));
     }
 };

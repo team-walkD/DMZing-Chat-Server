@@ -10,16 +10,31 @@ const {DOBO_STATUS} = require('../Constant');
 
 
 
-
-
-
-exports.getListByCount = (category) => {
+exports.getCategory = () => {
   return new Promise((resolve, reject) => {
     const sql =
       `
-      SELECT 
-      FROM 
-      WHERE
+      SELECT groups, description
+      FROM category
+      `;
+
+    pool.query(sql, [], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    })
+  })
+};
+
+exports.getDivision = (category) => {
+  return new Promise((resolve, reject) => {
+    const sql =
+      `
+      SELECT id, description
+      FROM category
+      WHERE groups = ? AND classification = 2
       `;
 
     pool.query(sql, [category], (err, rows) => {
@@ -31,6 +46,29 @@ exports.getListByCount = (category) => {
     })
   })
 };
+
+exports.getSection = (id) => {
+  return new Promise((resolve, reject) => {
+    const sql =
+      `
+      SELECT c.title, c.description, c.img_url
+      FROM category as cate, contents as c
+      WHERE cate.id = c.classification and cate.id = ?
+      `;
+
+    pool.query(sql, [id], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    })
+  })
+};
+
+
+
+
 
 
 
