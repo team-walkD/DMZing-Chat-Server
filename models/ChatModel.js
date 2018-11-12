@@ -16,6 +16,7 @@ exports.getCategory = () => {
       `
       SELECT groups, description
       FROM category
+      WHERE classification = 1
       `;
 
     pool.query(sql, [], (err, rows) => {

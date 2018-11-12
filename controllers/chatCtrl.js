@@ -24,7 +24,7 @@ exports.category = async (req, res, next) => {
     try {
   
       const category = req.params.category;
-      result = await chatModel.getCategory(category);  
+      result = await chatModel.getDivision(category);  
   
     } catch (error) {
       return next(error);
@@ -65,7 +65,7 @@ exports.category = async (req, res, next) => {
 
 
 
-  
+
 
 
 exports.signup = async (req, res, next) => {

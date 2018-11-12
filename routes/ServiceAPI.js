@@ -7,10 +7,10 @@ module.exports = (router) => {
 
   router.route('/chat')
     .get(chatCtrl.category);
-  
+
   router.route('/chat/division/:category')
     .get(chatCtrl.division);
-  
+
   router.route('/chat/section/:id')
     .get(chatCtrl.section);
 
